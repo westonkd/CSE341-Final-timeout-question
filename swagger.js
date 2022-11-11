@@ -161,7 +161,7 @@ const doc = {
         ],
         responses: {
           200: {
-            description: OK,
+            description: "OK",
           },
           204: {
             description: "Updated house listing",
@@ -272,7 +272,7 @@ const doc = {
     components: {}, // by default: empty object (OpenAPI 3.x)
   },
 };
-const outputFile = "./path/swagger-output.json";
+const outputFile = "swagger.json";
 const endpointsFiles = ["index.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

@@ -1,0 +1,27 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Willow",
+    "description": "Willow, the real estate API"
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Willow API",
+      "description": "CRUD operations accessing the 4 collections"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {}
+}
