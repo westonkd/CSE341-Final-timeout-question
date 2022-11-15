@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon index.js",
     "start": "node index.js",
-    "swagger": "node ./swagger.js"
+    "swagger": "node swagger.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "index.js": "^0.0.3",
     "mongodb": "^4.11.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "swagger-autogen": "^2.22.0",
+    "swagger-express-router": "^1.0.0",
     "swagger-ui-express": "^4.6.0"
   }
 }

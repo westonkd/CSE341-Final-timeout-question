@@ -1,6 +1,6 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-const database_string = dotenv.DB_CONNECTION_STRING;
+const database_string = process.env.DB_CONNECTION_STRING;
 
 let database;
 

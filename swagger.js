@@ -18,9 +18,8 @@ const doc = {
     },
   ],
   paths: {
-    "/house/": {
+    "/apartments/": {
       post: {
-        tags: "/house",
         description: "Create a new listing",
         parameters: [
           {
@@ -74,7 +73,7 @@ const doc = {
             description: "OK",
           },
           201: {
-            description: "Created new house listing",
+            description: "Created new apartments listing",
           },
           401: {
             description: "Not Authorized",
@@ -85,10 +84,9 @@ const doc = {
         },
       },
     },
-    "/house/{houseId}": {
+    "/apartments/{apartmentsId}": {
       get: {
-        tags: "/house",
-        description: "Find and return specific house listing, ID required",
+        description: "Find and return specific apartments listing, ID required",
         parameters: [
           {
             name: "id",
@@ -110,7 +108,6 @@ const doc = {
         },
       },
       put: {
-        tags: "/house",
         description: "Updates specific contact by id",
         parameters: [
           {
@@ -164,7 +161,7 @@ const doc = {
             description: "OK",
           },
           204: {
-            description: "Updated house listing",
+            description: "Updated apartments listing",
           },
           401: {
             description: "Not Authorized",
@@ -172,8 +169,7 @@ const doc = {
         },
       },
       delete: {
-        tags: "/house",
-        description: "Deletes specific house listing by id",
+        description: "Deletes specific apartments listing by id",
         parameters: [
           {
             name: "id",
@@ -192,11 +188,10 @@ const doc = {
         },
       },
     },
-    "/house/findByAvailability": {
+    "/apartments/findByAvailability": {
       get: {
-        tags: "/house",
         description:
-          "Find and return all house listings by either available or unavailable",
+          "Find and return all apartments listings by either available or unavailable",
         parameters: [
           {
             name: "availability",
@@ -218,9 +213,8 @@ const doc = {
         },
       },
     },
-    "/house/{houseId}/uploadImage": {
+    "/apartments/{apartmentsId}/uploadImage": {
       post: {
-        tags: "/house",
         description: "Add image to existing listing",
         parameters: [
           {
@@ -235,7 +229,7 @@ const doc = {
             schema: {
               type: "object",
               properties: {
-                houseID: {
+                apartmentsID: {
                   example: "any",
                 },
               },
@@ -247,7 +241,7 @@ const doc = {
             description: "OK",
           },
           201: {
-            description: "Created new house listing",
+            description: "Created new apartments listing",
           },
           401: {
             description: "Not Authorized",
@@ -258,7 +252,6 @@ const doc = {
         },
       },
     },
-    
     securityDefinitions: {
       Authorization: {
         type: "apiKey",
@@ -272,7 +265,9 @@ const doc = {
     components: {}, // by default: empty object (OpenAPI 3.x)
   },
 };
-const outputFile = "swagger.json";
+const outputFile = "./swagger.json";
 const endpointsFiles = ["index.js"];
 
-swaggerAutogen(outputFile, endpointsFiles, doc);
+swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
+  require("./index");
+});

@@ -7,12 +7,6 @@
   },
   "host": "",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "Willow API",
-      "description": "CRUD operations accessing the 4 collections"
-    }
-  ],
   "schemes": [
     "http",
     "https"
@@ -23,5 +17,246 @@
   "produces": [
     "application/json"
   ],
-  "paths": {}
+  "tags": [{
+    "name": "Willow API",
+    "description": "CRUD operations accessing the 4 collections"
+  }],
+  "paths": {
+    "/apartments/": {
+      "post": {
+        "description": "Create a new listing",
+        "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created new apartments listing"
+          },
+          "401": {
+            "description": "Not Authorized"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/apartments/{apartmentsId}": {
+      "get": {
+        "description": "Find and return specific apartments listing, ID required",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Not Authorized"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Updates specific contact by id",
+        "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "Updated apartments listing"
+          },
+          "401": {
+            "description": "Not Authorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes specific apartments listing by id",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Not Authorized"
+          }
+        }
+      }
+    },
+    "/apartments/findByAvailability/": {
+      "get": {
+        "description": "Find and return all apartments listings by either available or unavailable",
+        "parameters": [{
+          "name": "availability",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Not Authorized"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/apartments/{apartmentsId}/uploadImage": {
+      "post": {
+        "description": "Add image to existing listing",
+        "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "apartmentsID": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created new apartments listing"
+          },
+          "401": {
+            "description": "Not Authorized"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authentication token (Bearer)",
+      "example": "Bearer <your token>"
+    }
+  },
+  "definitions": {},
+  "components": {}
+
 }
