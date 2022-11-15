@@ -26,7 +26,6 @@
       "post": {
         "description": "Create a new listing",
         "parameters": [{
-            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
