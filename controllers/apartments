@@ -1,7 +1,7 @@
-const getDB = require("../database/connect");
+const fetchDb = require("../database/connect");
 const { ObjectId } = require("mongodb");
 
-const getOneApartment = async (req, res, next) => {
+const getOneApartment = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res
       .status(400)
@@ -17,6 +17,7 @@ const getOneApartment = async (req, res, next) => {
         if (err) {
           res.status(500).json({ message: err });
         }
+        res.setHeader('Content-Type', 'application/json')
         res.status(200).json(result[0]);
       });
     console.log(ObjectId(req.params.id), document);
@@ -24,13 +25,13 @@ const getOneApartment = async (req, res, next) => {
     console.error(err);
     res.status(400).json({ message: err });
   }
-  next();
+  // next();
 };
 
 // try catch to access database, used in functions
 const _collection = async () => {
   try {
-    const db = await getDB();
+    const db = await fetchDb();
     return db.collection("apartments");
   } catch (error) {
     console.error("Error getting kitchens collection", error);
