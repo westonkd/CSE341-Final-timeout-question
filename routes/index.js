@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 
 
-router.use([openCors, bodyParser]);
+router.use([openCors, bodyParser.json()]);
 
 router.use("/apartments", require("./apartments"));
 // router.use("/commercial", require("./commercial"));
