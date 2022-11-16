@@ -1,0 +1,5 @@
+### get all apartments
+GET http://127.0.0.1:8080/apartments HTTP/1.1
+
+### get single apartment
+GET http://localhost:8080/apartments/6372e6e7a272e19be38fa247 HTTP/1.1
