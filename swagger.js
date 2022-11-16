@@ -37,7 +37,7 @@ const doc = {
   //   //           pricePerSqFeet: {example: 100.00},
   //   //           availability: {example: true},
   //   //           propertyDescription: {example: ""},
-  //   //           lengthTimeListed: {example: 222} 
+  //   //           lengthTimeListed: {example: 222}
   //   //           },
   //   //         },
   //   //       },
@@ -226,7 +226,7 @@ const doc = {
   //   //     },
   //   //   },
   //   // },
-      
+
   // },
   // securityDefinitions: {
   //   Authorization: {
@@ -241,7 +241,7 @@ const doc = {
   components: {}, // by default: empty object (OpenAPI 3.x)
 };
 const outputFile = "./swagger.json";
-const endpointsFiles = ["./index.js"];
+const endpointsFiles = ["./index"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
   require("./index");
