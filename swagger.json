@@ -7,6 +7,12 @@
   },
   "host": "",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Willow API",
+      "description": "CRUD operations accessing the 4 collections"
+    }
+  ],
   "schemes": [
     "http",
     "https"
@@ -17,19 +23,35 @@
   "produces": [
     "application/json"
   ],
-  "tags": [{
-    "name": "Willow API",
-    "description": "CRUD operations accessing the 4 collections"
-  }],
   "paths": {
     "/apartments/": {
-      "post": {
-        "description": "Create a new listing",
-        "parameters": [{
-            "in": "path",
-            "required": true,
-            "type": "string"
+      "get": {
+        "tags": [
+          "apartments"
+        ],
+        "description": "Get all apartments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "apartments"
+        ],
+        "description": "An insert into the apartments collection.",
+        "parameters": [
           {
             "name": "body",
             "in": "body",
@@ -71,45 +93,45 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
           "201": {
-            "description": "Created new apartments listing"
+            "description": "Created"
           },
-          "401": {
-            "description": "Not Authorized"
-          },
-          "500": {
-            "description": "Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
-    "/apartments/{apartmentsId}": {
+    "/apartments/{id}": {
       "get": {
-        "description": "Find and return specific apartments listing, ID required",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "tags": [
+          "apartments"
+        ],
+        "description": "GET and return one apartment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Not Authorized"
-          },
           "500": {
-            "description": "Server Error"
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "description": "Updates specific contact by id",
-        "parameters": [{
+        "tags": [
+          "apartments"
+        ],
+        "description": "An id is required to update, use `6372e6e7a272e19be38fa247`.",
+        "parameters": [
+          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -160,102 +182,41 @@
             "description": "OK"
           },
           "204": {
-            "description": "Updated apartments listing"
+            "description": "No Content"
           },
-          "401": {
-            "description": "Not Authorized"
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "description": "Deletes specific apartments listing by id",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Not Authorized"
-          }
-        }
-      }
-    },
-    "/apartments/findByAvailability/": {
-      "get": {
-        "description": "Find and return all apartments listings by either available or unavailable",
-        "parameters": [{
-          "name": "availability",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Not Authorized"
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/apartments/{apartmentsId}/uploadImage": {
-      "post": {
-        "description": "Add image to existing listing",
-        "parameters": [{
+        "tags": [
+          "apartments"
+        ],
+        "description": "Delete requires an id to complete, use one from the GET",
+        "parameters": [
+          {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "apartmentsID": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "201": {
-            "description": "Created new apartments listing"
-          },
-          "401": {
-            "description": "Not Authorized"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
-            "description": "Server Error"
+            "description": "Internal Server Error"
           }
         }
       }
     }
-  },
-  "securityDefinitions": {
-    "Authorization": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header",
-      "description": "Authentication token (Bearer)",
-      "example": "Bearer <your token>"
-    }
-  },
-  "definitions": {},
-  "components": {}
-
+  }
 }
